@@ -1,0 +1,22 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>ECLGeoprocessingAddin</Name>
+  <AddInID>{5d11d019-714b-4cf2-aec1-c158171a54e8}</AddInID>
+  <Description>Sample Code for creating an Addin</Description>
+  <Version>1.0</Version>
+  <Image>Images\ECLGeoprocessingAddin.png</Image>
+  <Author>dwilton</Author>
+  <Company>Exprodat Consulting Ltd</Company>
+  <Date>25/11/2013</Date>
+  <Targets>
+    <Target name="Desktop" version="10.1" />
+  </Targets>
+  <AddIn language="CLR" library="ECLGeoprocessingAddin.dll" namespace="ECLGeoprocessingAddin">
+    <ArcMap>
+      <Extensions>
+        <Extension id="Exprodat_Consulting_Ltd_ECLGeoprocessingAddin_ECLGeoProExtension" class="ECLGeoProExtension" productName="Exprodat Geoprocessing.net Sample" showInExtensionDialog="true" autoLoad="true">
+          <Description>Sample Code</Description>
+        </Extension>
+      </Extensions>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>
