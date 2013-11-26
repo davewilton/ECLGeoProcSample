@@ -59,7 +59,6 @@ Public Class GPRasterSetNullValues : Inherits ECLGPBaseFunction
             inputParameter = New GPParameterClass()
             'Set the default value
             inputParameter.DataType = CType(New GPDoubleTypeClass(), IGPDataType)
-            inputParameter.Value = CType(gpStringValue, IGPValue)
             inputParameter.Direction = esriGPParameterDirection.esriGPParameterDirectionInput
             inputParameter.DisplayName = "Value"
             inputParameter.Name = "in_value"
@@ -87,6 +86,14 @@ Public Class GPRasterSetNullValues : Inherits ECLGPBaseFunction
             parameterValue = GpUtilities.UnpackGPValue(Parameters.Element(ByName("out_raster")))
             If CType(envMgr, IGeoProcessorSettings).OverwriteOutput Then DeleteExisting(parameterValue)
             Dim outRasterPath As String = parameterValue.GetAsText()
+
+            'get the operators
+            Dim doubleNullValue As Double
+            Dim opp As String
+            parameterValue = GpUtilities.UnpackGPValue(Parameters.Element(ByName("in_value")))
+            doubleNullValue = Convert.ToDouble(parameterValue.GetAsText())
+            parameterValue = GpUtilities.UnpackGPValue(Parameters.Element(ByName("in_operator")))
+            opp = parameterValue.GetAsText()
 
             'get the input raster
             Dim rasterDS As IRasterDataset2 = Nothing
@@ -147,10 +154,31 @@ Public Class GPRasterSetNullValues : Inherits ECLGPBaseFunction
             For i As Integer = 0 To pixelBlock.Width - 1
                 For j As Integer = 0 To pixelBlock.Height - 1
                     Dim val As Object = pixels.GetValue(i, j)
-                    If val <> infoNew.NoDataValue Then
-                        pixelsNew.SetValue(pixels.GetValue(i, j), i, j)
+
+                    'check if the value should be set to null
+                    If val = infoNew.NoDataValue Then
+                        pixelsNew.SetValue(infoNew.NoDataValue, i, j) 'if it was already null ensure it stays null
                     Else
-                        pixelsNew.SetValue(infoNew.NoDataValue, i, j)
+                        Select Case opp 'otherwise perform the comparison
+                            Case "equalTo"
+                                If Math.Abs(Convert.ToDouble(val) - doubleNullValue) < 0.000000001 Then
+                                    pixelsNew.SetValue(infoNew.NoDataValue, i, j)
+                                Else
+                                    pixelsNew.SetValue(pixels.GetValue(i, j), i, j)
+                                End If
+                            Case "lessThan"
+                                If Convert.ToDouble(val) < doubleNullValue Then
+                                    pixelsNew.SetValue(infoNew.NoDataValue, i, j)
+                                Else
+                                    pixelsNew.SetValue(pixels.GetValue(i, j), i, j)
+                                End If
+                            Case "greaterThan"
+                                If Convert.ToDouble(val) > doubleNullValue Then
+                                    pixelsNew.SetValue(infoNew.NoDataValue, i, j)
+                                Else
+                                    pixelsNew.SetValue(pixels.GetValue(i, j), i, j)
+                                End If
+                        End Select
                     End If
                 Next
             Next
@@ -187,7 +215,7 @@ Public Class GPRasterSetNullValues : Inherits ECLGPBaseFunction
         parameterValue = GpUtilities.UnpackGPValue(Parameters.Element(ByName("out_raster")))
         If Not parameterValue Is Nothing Then
             Dim outGrid As String = parameterValue.GetAsText()
-            If Not outGrid.EndsWith(".tif") Then
+            If Not outGrid.EndsWith(".tif") And outGrid.Trim() <> "" Then
                 parameterValue.SetAsText(outGrid & ".tif")
             End If
         End If
