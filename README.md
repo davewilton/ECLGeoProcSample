@@ -1,4 +1,4 @@
 ECLGeoProcSample
 ================
 
-Sample of .net geoprocessing tools to acompany blog post
+Sample of ESRI ArcGIS .net geoprocessing tools to acompany blog post.
