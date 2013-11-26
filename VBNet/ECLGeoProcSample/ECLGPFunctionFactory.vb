@@ -39,12 +39,12 @@ Public Class ECLGPFunctionFactory : Implements IGPFunctionFactory
     ' Implementation of the Function Factory
 
     Private _mGPFunction As IGPFunction
-    Private ReadOnly _mItems As New GPItems
+    Private ReadOnly _mItems As New GPAllItems
 
     ' Utility Function added to create the function names.
     Private Function CreateGPFunctionNames(ByVal index As Long) As IGPFunctionName
 
-        Dim item As GPItems.GPItem = _mItems.GetItem(CInt(index))
+        Dim item As GPAllItems.GPItem = _mItems.GetItem(CInt(index))
 
         Dim functionName As IGPFunctionName = New GPFunctionNameClass()
         Dim gprName As IGPName

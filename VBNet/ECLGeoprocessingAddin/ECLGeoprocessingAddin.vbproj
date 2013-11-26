@@ -166,13 +166,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GPCalculateArea\ECLGeoProcSample.vbproj">
+    <Content Include="Resources\GeoprocessingHelp\CalculateArea.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ECLGeoProcSample\ECLGeoProcSample.vbproj">
       <Project>{5666F107-3A8D-4CE2-AFE2-1B6E847A93D0}</Project>
       <Name>ECLGeoProcSample</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\GeoprocessingHelp\CalculateArea.xml" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

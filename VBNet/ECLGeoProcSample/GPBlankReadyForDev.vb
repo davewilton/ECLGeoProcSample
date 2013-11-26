@@ -3,7 +3,7 @@ Imports ESRI.ArcGIS.esriSystem
 Imports ESRI.ArcGIS.Geoprocessing
 Imports ESRI.ArcGIS.Geodatabase
 
-Public Class BlankGPreadyForDev : Inherits ECLGPBaseFunction
+Public Class GPBlankReadyForDev : Inherits ECLGPBaseFunction
 
     Friend Overrides ReadOnly Property ToolName() As String
         Get

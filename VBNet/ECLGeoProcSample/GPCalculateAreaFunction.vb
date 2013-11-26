@@ -15,7 +15,7 @@ Imports ESRI.ArcGIS.Geometry
 Imports ESRI.ArcGIS.Geoprocessing
 Imports ESRI.ArcGIS.esriSystem
 
-Public Class CalculateAreaFunction : Inherits ECLGPBaseFunction
+Public Class GPCalculateAreaFunction : Inherits ECLGPBaseFunction
 
     ' Set the name of the function tool. 
     ' This name appears when executing the tool at the command line or in scripting. 
@@ -241,7 +241,7 @@ Public Class CalculateAreaFunction : Inherits ECLGPBaseFunction
             pStepPro.Position = 0
             pStepPro.Show()
         End If
-        
+
         ' Create an Update Cursor
         indexA = inputFeatureClass.FindField(sField)
         Dim updateCursor As IFeatureCursor = inputFeatureClass.Update(Nothing, False)

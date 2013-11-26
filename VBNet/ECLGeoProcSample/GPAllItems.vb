@@ -6,7 +6,7 @@ Imports System.Collections.Generic
 ''' To add new items to the toolbox just add them to the constructor of this class.
 ''' </summary>
 ''' <remarks></remarks>
-Public Class GPItems
+Public Class GPAllItems
 
     Private ReadOnly _mItems As New List(Of GPItem)
 
@@ -18,9 +18,11 @@ Public Class GPItems
         Dim item As IGPFunction2
 
         'TODO Add your list of items here
-        item = New CalculateAreaFunction()
+        item = New GPCalculateAreaFunction()
         _mItems.Add(New GPItem(item.Name, "Folder\SubFolder", "", item.DisplayName, item))
-        item = New BlankGPreadyForDev()
+        item = New GPBlankReadyForDev()
+        _mItems.Add(New GPItem(item.Name, "Folder\SubFolder", "", item.DisplayName, item))
+        item = New GPRasterSetNullValues()
         _mItems.Add(New GPItem(item.Name, "Folder\SubFolder", "", item.DisplayName, item))
 
     End Sub

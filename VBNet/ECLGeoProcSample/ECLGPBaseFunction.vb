@@ -1,4 +1,5 @@
-﻿Imports System.Diagnostics
+﻿Imports System
+Imports System.Diagnostics
 Imports ESRI.ArcGIS.Geodatabase
 Imports ESRI.ArcGIS.Geoprocessing
 Imports ESRI.ArcGIS.esriSystem
@@ -70,6 +71,19 @@ Public MustInherit Class ECLGPBaseFunction : Implements IGPFunction2
         Return False
     End Function
 
+    Friend Sub DeleteExisting(parameterValue As IGPValue)
+        'Check if any of the files already exist
+        If Not parameterValue Is Nothing Then
+            Dim a As String = parameterValue.GetAsText()
+            If GpUtilities.Exists(parameterValue) Then
+                Try
+                    GpUtilities.Delete(parameterValue)
+                Catch ex As Exception
+                    Throw New Exception(Environment.NewLine & " Unable to delete existing dataset. Please delete manually or select a different output file. " & a)
+                End Try
+            End If
+        End If
+    End Sub
 
     ''' <summary>
     ''' location where the parameters to the Function Tool are defined. 

@@ -89,6 +89,10 @@
     <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=9.2.0.1278, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster, Version=10.1.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=9.2.0.1278, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -106,11 +110,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlankGPreadyForDev.vb" />
+    <Compile Include="GPBlankReadyForDev.vb" />
+    <Compile Include="GPRasterSetNullValues.vb" />
     <Compile Include="ECLGPBaseFunction.vb" />
     <Compile Include="ECLGPFunctionFactory.vb" />
-    <Compile Include="CalculateAreaFunction.vb" />
-    <Compile Include="GPItems.vb" />
+    <Compile Include="GPCalculateAreaFunction.vb" />
+    <Compile Include="GPAllItems.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
     <Compile Include="ECLUtility.vb" />
   </ItemGroup>
