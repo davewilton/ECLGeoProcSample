@@ -10,7 +10,7 @@ Public Class ECLGeoProExtension
     Protected Overrides Sub OnStartup()
         '
         ' TODO: Uncomment to start listening to document events
-        '
+        'WireDocumentEvents()
 
         'Create the toolbox. WARNING this is slow, don't call on every start up in production
         CreateToolbox()
@@ -30,6 +30,6 @@ Public Class ECLGeoProExtension
     End Sub
 
     Private Sub ArcMapNewDocument()
-        ' TODO: Add code to handle new document event
+
     End Sub
 End Class
