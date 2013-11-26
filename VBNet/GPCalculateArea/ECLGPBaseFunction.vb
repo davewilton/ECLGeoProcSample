@@ -3,6 +3,7 @@ Imports ESRI.ArcGIS.Geodatabase
 Imports ESRI.ArcGIS.Geoprocessing
 Imports ESRI.ArcGIS.esriSystem
 Imports System.IO
+Imports System.Reflection
 
 Public MustInherit Class ECLGPBaseFunction : Implements IGPFunction2
 
@@ -189,7 +190,7 @@ Public MustInherit Class ECLGPBaseFunction : Implements IGPFunction2
         ' 
         Get
             Dim filePath As String, fileLocation As String
-            fileLocation = "" 'AddinPath
+            fileLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly.Location)
             'TODO
             filePath = System.IO.Path.Combine(fileLocation, "Resources\GeoprocessingHelp")
             If Not Directory.Exists(filePath) Then
