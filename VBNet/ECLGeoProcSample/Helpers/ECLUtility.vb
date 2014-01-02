@@ -48,7 +48,7 @@ Public Module ECLUtility
         'Run when the user interacts with another part of application
 
         Dim location As String = Path.GetDirectoryName(Assembly.GetExecutingAssembly.Location)
-        Dim regTb As String = IO.Path.Combine(location, "Resources") & "\register.tbx"
+        Dim regTb As String = IO.Path.Combine(location, "Resources") & "\regarcpy.tbx"
 
         Dim desTbx As String
         'this path will ensure it appears in 'My Toolboxes'.

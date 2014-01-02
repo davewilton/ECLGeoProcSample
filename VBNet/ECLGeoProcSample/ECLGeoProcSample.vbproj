@@ -110,14 +110,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GPBlankReadyForDev.vb" />
-    <Compile Include="GPRasterSetNullValues.vb" />
-    <Compile Include="ECLGPBaseFunction.vb" />
-    <Compile Include="ECLGPFunctionFactory.vb" />
-    <Compile Include="GPCalculateAreaFunction.vb" />
+    <Compile Include="GPItems\GPBlankReadyForDev.vb" />
+    <Compile Include="GPItems\GPRasterSetNullValues.vb" />
+    <Compile Include="Helpers\ECLGPBaseFunction.vb" />
+    <Compile Include="Helpers\ECLGPFunctionFactory.vb" />
+    <Compile Include="GPItems\GPCalculateAreaFunction.vb" />
     <Compile Include="GPAllItems.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
-    <Compile Include="ECLUtility.vb" />
+    <Compile Include="Helpers\ECLUtility.vb" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -136,6 +136,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
